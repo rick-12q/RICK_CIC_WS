@@ -1,0 +1,498 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080b0d">
+
+    <title>Luiz Henrique Monteiro — Pesquisa & Engenharia</title>
+    <meta name="description" content="Luiz Henrique Corrêa Monteiro — Engenharia de Controle e Automação, UNESP. Síntese e caracterização de filmes ultrafinos de carbono.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="config.js"></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="page-noise" aria-hidden="true"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- HEADER -->
+    <header class="site-header" id="siteHeader">
+        <a class="brand" href="#home" aria-label="Voltar ao início">
+            LH<span>.</span>
+        </a>
+
+        <nav class="main-nav" id="mainNav">
+            <a href="#about">Sobre</a>
+            <a href="#research">Pesquisa</a>
+            <a href="#methodology">Metodologia</a>
+            <a href="#results">Resultados</a>
+            <a href="#collaborators">Colaboradores</a>
+        </nav>
+
+        <div class="header-tools">
+<button class="tool-button theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema">
+                <span id="themeIcon">☼</span>
+            </button>
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+                <span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MARQUEE SUPERIOR: SOMENTE A FRASE SOLICITADA -->
+    <div class="top-marquee" aria-label="Todo mundo odeia o Luiz">
+        <div class="top-marquee-track">
+            <div class="top-marquee-group">
+                <span>TODO MUNDO ODEIA O LUIZ</span>
+                <span>TODO MUNDO ODEIA O LUIZ</span>
+                <span>TODO MUNDO ODEIA O LUIZ</span>
+                <span>TODO MUNDO ODEIA O LUIZ</span>
+            </div>
+            <div class="top-marquee-group" aria-hidden="true">
+                <span>TODO MUNDO ODEIA O LUIZ</span>
+                <span>TODO MUNDO ODEIA O LUIZ</span>
+                <span>TODO MUNDO ODEIA O LUIZ</span>
+                <span>TODO MUNDO ODEIA O LUIZ</span>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero section-shell" id="home">
+            <div class="hero-copy">
+                <div class="eyebrow reveal">
+                    <span class="eyebrow-dot"></span>
+                    <span>UNESP · ICT SOROCABA · CIC 2026</span>
+                </div>
+
+                <p class="hero-kicker reveal">
+                    Engenharia, ciência e pesquisa experimental.
+                </p>
+
+                <h1 class="hero-name reveal">
+                    Luiz Henrique
+                    <span>Corrêa Monteiro<span class="accent">.</span></span>
+                </h1>
+
+                <p class="hero-description reveal">
+                    Graduando em Engenharia de Controle e Automação na UNESP. Pesquisa em materiais, filmes finos e caracterização experimental.
+                </p>
+
+                <!-- DESTAQUE DO VÍDEO -->
+                <a class="video-callout reveal" id="videoLink" href="#" target="_blank" rel="noopener noreferrer">
+                    <span class="play-button" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 5.5v13L18 12z" fill="currentColor"/>
+                        </svg>
+                    </span>
+
+                    <span class="video-copy">
+                        <small>UM VÍDEO · INSTAGRAM</small>
+                        <strong>ENTENDA O QUE É (TODO MUNDO ODEIA O LUIZ)</strong>
+                        <span>O link abre o Instagram e mostra o vídeo que foi classificado.</span>
+                    </span>
+
+                    <span class="callout-arrow">↗</span>
+                </a>
+
+                <div class="hero-actions reveal">
+                    <a class="button button-filled" href="#research">
+                        <span>Conheça a pesquisa</span>
+                        <span>↓</span>
+                    </a>
+                    <a class="button button-quiet" id="votingLink" href="#" target="_blank" rel="noopener noreferrer">
+                        <span>Votação</span> ↗
+                    </a>
+                </div>
+
+                <div class="hero-footnote reveal">
+                    <span>ENGENHARIA DE CONTROLE E AUTOMAÇÃO</span>
+                    <span>XXXVIII CONGRESSO DE INICIAÇÃO CIENTÍFICA · ATIBAIA</span>
+                </div>
+            </div>
+
+            <div class="hero-portrait-wrap reveal" data-parallax="0.12">
+                <div class="portrait-frame">
+                    <img src="assets/images/profile.jpg" alt="Luiz Henrique Corrêa Monteiro" class="hero-portrait">
+                    <div class="portrait-gradient"></div>
+                    <div class="portrait-caption">
+                        <span> SABOR PESQUISADOR / ESTUDANTE DE ENGENHARIA/SORRISO COLGATE (não tenho patrocínio)</span>
+                        <strong>Luiz Henrique Monteiro</strong>
+                    </div>
+                    <span class="portrait-index">01 — UNESP</span>
+                </div>
+                <div class="portrait-orbit orbit-one"></div>
+                <div class="portrait-orbit orbit-two"></div>
+            </div>
+
+            <div class="hero-scroll-hint" aria-hidden="true">
+                <span></span>
+                ROLE PARA EXPLORAR
+            </div>
+        </section>
+
+        <!-- FAIXA DE FOTOGRAFIAS -->
+        <section class="image-ribbon" aria-label="Imagens da pesquisa e do laboratório">
+            <div class="image-ribbon-track">
+                <div class="image-ribbon-group">
+                    <img src="assets/images/reactor-2.jpg" alt="Reator 2 do laboratório">
+                    <img src="assets/images/magnetron-sputtering.jpg" alt="Sistema Magnetron Sputtering">
+                    <img src="assets/images/afm.jpg" alt="Imagem de microscopia de força atômica">
+                    <img src="assets/images/laboratory-1.jpg" alt="Laboratório">
+                </div>
+                <div class="image-ribbon-group" aria-hidden="true">
+                    <img src="assets/images/reactor-2.jpg" alt="">
+                    <img src="assets/images/magnetron-sputtering.jpg" alt="">
+                    <img src="assets/images/afm.jpg" alt="">
+                    <img src="assets/images/laboratory-1.jpg" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE -->
+        <section class="about section-shell section-space" id="about">
+            <div class="section-heading reveal">
+
+                <h2>Um pouco sobre mim<span class="accent">.</span></h2>
+            </div>
+
+            <div class="about-layout">
+                <div class="about-photo reveal">
+                    <img src="assets/images/profile.jpg" alt="Luiz Henrique Monteiro">
+                    <span class="photo-label">SOROCABA, SP — BRASIL - PLANETA TERRA</span>
+                </div>
+
+                <div class="about-text reveal">
+                    <p class="about-statement">
+                        Minha formação está na engenharia. Minha curiosidade não fica restrita a uma única área (felizmente, ou não).
+                    </p>
+
+                    <p>
+                        Sou graduando em Engenharia de Controle e Automação pela Universidade Estadual Paulista (UNESP), no Instituto de Ciência e Tecnologia de Sorocaba.
+                    </p>
+
+                    <p>
+                        No LaPTec, desenvolvo pesquisa científica em síntese e caracterização de materiais, trabalhando com deposição de filmes finos e análise de suas propriedades físicas.
+                    </p>
+
+                    <p>
+                        A experiência combina atividades experimentais, análise de dados e fundamentos de física, eletrônica e ciência dos materiais.
+                    </p>
+
+                    <div class="profile-facts">
+                        <div>
+                            <span>FORMAÇÃO</span>
+                            <strong>Engenharia de Controle e Automação</strong>
+                        </div>
+                        <div>
+                            <span>INSTITUIÇÃO</span>
+                            <strong>UNESP · ICT Sorocaba</strong>
+                        </div>
+                        <div>
+                            <span>LABORATÓRIO</span>
+                            <strong>LaPTec</strong>
+                        </div>
+                        <div>
+                            <span>ÁREAS</span>
+                            <strong>Materiais · Física · Engenharia</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PESQUISA -->
+        <section class="research section-shell section-space" id="research">
+            <div class="section-heading reveal">
+                <h2>O trabalho científico<span class="accent">.</span></h2>
+            </div>
+
+            <div class="research-title-area reveal">
+                <span class="research-overline">INICIAÇÃO CIENTÍFICA · LaPTec</span>
+                <h3>SÍNTESE E CARACTERIZAÇÃO DE FILMES ULTRAFINOS DE CARBONO</h3>
+                <p>
+                    Estudo experimental de filmes de carbono depositados por Magnetron Sputtering pulsado.
+                </p>
+            </div>
+
+            <div class="research-feature">
+                <div class="research-image reveal" data-parallax="0.05">
+                    <img src="assets/images/reactor-2.jpg" alt="Reator 2 utilizado na pesquisa">
+                    <span class="image-stamp">REATOR 02 / LaPTec</span>
+                </div>
+
+                <div class="research-description reveal">
+                    <span class="micro-label">QUESTÃO DE PESQUISA</span>
+                    <h3>Como as condições de deposição influenciam as propriedades dos filmes ultrafinos de carbono?</h3>
+                    <p>
+                        O trabalho investiga a deposição de filmes ultrafinos de carbono por Magnetron Sputtering pulsado, avaliando a influência do tempo de deposição sobre a espessura, a transmitância óptica, a molhabilidade e a morfologia superficial.
+                    </p>
+                    <p>
+                        A síntese utiliza alvo de grafite e atmosfera de argônio. As amostras são produzidas sobre substratos de vidro e mica e posteriormente submetidas a diferentes técnicas de caracterização.
+                    </p>
+
+                    <div class="parameter-row">
+                        <div>
+                            <strong>1 kHz</strong>
+                            <span>FREQUÊNCIA</span>
+                        </div>
+                        <div>
+                            <strong>Ar</strong>
+                            <span>ATMOSFERA</span>
+                        </div>
+                        <div>
+                            <strong>C</strong>
+                            <span>ALVO DE GRAFITE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="funding-strip reveal">
+                <span class="funding-symbol">↗</span>
+                <div>
+                    <small>APOIO À PESQUISA</small>
+                    <strong>PIBIC / Reitoria UNESP — Processo nº 21186</strong>
+                    <span>Edital 8/2025 · LaPTec — Laboratório de Plasmas Tecnológicos</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- METODOLOGIA -->
+        <section class="methodology section-shell section-space" id="methodology">
+            <div class="section-heading reveal">
+
+                <h2>Da deposição à caracterização<span class="accent">.</span></h2>
+            </div>
+
+            <p class="section-lead reveal">
+                Uma sequência de etapas experimentais para produzir os filmes e investigar suas propriedades.
+            </p>
+
+            <div class="method-grid">
+                <article class="method-card method-reactor reveal">
+                    <span class="method-number">01</span>
+                    <div class="method-glass-icon">◉</div>
+                    <div class="method-card-content">
+                        <span class="method-category">SÍNTESE</span>
+                        <h3>Deposição</h3>
+                        <p>Magnetron Sputtering pulsado, com alvo de grafite, atmosfera de argônio e frequência de 1 kHz.</p>
+                        <span class="equipment-tag">REATOR LaPTec</span>
+                    </div>
+                </article>
+
+                <article class="method-card method-dektak reveal">
+                    <span class="method-number">02</span>
+                    <div class="method-glass-icon">⌁</div>
+                    <div class="method-card-content">
+                        <span class="method-category">ESPESSURA</span>
+                        <h3>Perfilometria</h3>
+                        <p>Determinação da espessura dos filmes depositados em diferentes tempos.</p>
+                        <span class="equipment-tag">DEKTAK 150</span>
+                    </div>
+                </article>
+
+                <article class="method-card method-lambda reveal">
+                    <span class="method-number">03</span>
+                    <div class="method-glass-icon">◌</div>
+                    <div class="method-card-content">
+                        <span class="method-category">PROPRIEDADES ÓPTICAS</span>
+                        <h3>Transmitância</h3>
+                        <p>Avaliação da transmitância óptica dos filmes em função do tempo de deposição.</p>
+                        <span class="equipment-tag">LAMBDA 750</span>
+                    </div>
+                </article>
+
+                <article class="method-card method-rame reveal">
+                    <span class="method-number">04</span>
+                    <div class="method-glass-icon">◍</div>
+                    <div class="method-card-content">
+                        <span class="method-category">SUPERFÍCIE</span>
+                        <h3>Molhabilidade</h3>
+                        <p>Medição do ângulo de contato para avaliar o comportamento superficial.</p>
+                        <span class="equipment-tag">RAMÉ-HART</span>
+                    </div>
+                </article>
+
+                <article class="method-card method-afm reveal">
+                    <span class="method-number">05</span>
+                    <div class="method-glass-icon">▦</div>
+                    <div class="method-card-content">
+                        <span class="method-category">NANOESTRUTURA</span>
+                        <h3>Morfologia</h3>
+                        <p>Análise da topografia e da morfologia superficial em escala nanométrica.</p>
+                        <span class="equipment-tag">PARK XE100 / AFM</span>
+                    </div>
+                </article>
+            </div>
+
+            <div class="substrate-panel reveal">
+                <div>
+                    <span class="micro-label">PREPARAÇÃO DAS AMOSTRAS</span>
+                    <h3>Substratos e tempos de deposição</h3>
+                    <p>As amostras foram preparadas em diferentes condições para comparação das propriedades.</p>
+                </div>
+                <div class="sample-chips">
+                    <div><span>VIDRO</span><strong>1 min</strong></div>
+                    <div><span>VIDRO</span><strong>3 min</strong></div>
+                    <div><span>VIDRO</span><strong>10 min</strong></div>
+                    <div><span>MICA</span><strong>1 min</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTADOS -->
+        <section class="results section-shell section-space" id="results">
+            <div class="section-heading reveal">
+
+                <h2>O que os dados mostram<span class="accent">.</span></h2>
+            </div>
+
+            <p class="section-lead reveal">
+                O tempo de deposição influencia características físicas e superficiais dos filmes, olha aqui.
+            </p>
+
+            <div class="results-grid">
+                <article class="result-card result-thickness reveal">
+                    <span class="result-index">01 / ESPESSURA</span>
+                    <h3>Espessura</h3>
+                    <div class="thickness-values">
+                        <div><strong>~23<small> nm</small></strong><span>3 MIN</span></div>
+                        <div><strong>~138<small> nm</small></strong><span>10 MIN</span></div>
+                    </div>
+                    <p>Para 1 minuto de deposição, a espessura ficou abaixo do limite de detecção do equipamento.</p>
+                </article>
+
+                <article class="result-card reveal">
+                    <span class="result-index">02 / ÓPTICA</span>
+                    <h3>Transmitância óptica</h3>
+                    <div class="comparison-values">
+                        <div><strong>~90%</strong><span>INICIAL</span></div>
+                        <span class="comparison-arrow">→</span>
+                        <div><strong>~80%</strong><span>FINAL</span></div>
+                    </div>
+                    <p>A transmitância óptica diminuiu com o aumento do tempo de deposição.</p>
+                </article>
+
+                <article class="result-card reveal">
+                    <span class="result-index">03 / MOLHABILIDADE</span>
+                    <h3>Ângulo de contato</h3>
+                    <div class="comparison-values">
+                        <div><strong>~73°</strong><span>INICIAL</span></div>
+                        <span class="comparison-arrow">→</span>
+                        <div><strong>~88°</strong><span>FINAL</span></div>
+                    </div>
+                    <p>O aumento do ângulo de contato indica alteração no comportamento de molhabilidade da superfície.</p>
+                </article>
+            </div>
+
+            <div class="afm-feature">
+                <div class="afm-visual reveal">
+                    <img src="assets/images/afm.jpg" alt="Imagem de caracterização de superfície por AFM">
+                    <span class="image-stamp">AFM / MICA</span>
+                </div>
+                <div class="afm-copy reveal">
+                    <span class="micro-label">04 / MORFOLOGIA SUPERFICIAL</span>
+                    <h3>O que acontece na escala nanométrica?</h3>
+                    <p>A análise por AFM confirmou a presença do filme depositado sobre mica e revelou uma morfologia superficial semelhante à observada em estruturas de folhas de grafeno.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="dancing-phrase" aria-label="TODO MUNDO ODEIA O LUIZ">
+          <span>T</span><span>O</span><span>D</span><span>O</span>
+          <span class="word-space"></span>
+          <span>M</span><span>U</span><span>N</span><span>D</span><span>O</span>
+          <span class="word-space"></span>
+          <span>O</span><span>D</span><span>E</span><span>I</span><span>A</span>
+          <span class="word-space"></span>
+          <span>O</span>
+          <span class="word-space"></span>
+          <span>L</span><span>U</span><span>I</span><span>Z</span>
+        </div>
+
+
+        <!-- COLABORADORES -->
+        <section class="collaborators section-shell section-space" id="collaborators">
+            <div class="section-heading reveal">
+
+                <h2>Pesquisa também é colaboração<span class="accent">.</span></h2>
+            </div>
+
+            <p class="section-lead reveal">
+                Agradeço aos pesquisadores e colaboradores que contribuíram para o desenvolvimento deste trabalho no LaPTec. Agradeço a ID pelo vídeo incrível, e a DUDA pela paciência em me mostrar uma tecnologia super moderna, o CANVA (lançado em 2013).
+            </p>
+
+            <div class="collaborator-list reveal">
+                <div class="collaborator-row">
+                    <span class="collaborator-number">01</span>
+                    <strong>Prof. Dr. José Roberto Ribeiro Bortoleto</strong>
+                </div>
+                <div class="collaborator-row">
+                    <span class="collaborator-number">02</span>
+                    <div class="collaborator-name">
+                        <strong>Me. Paulo Silas Oliveira</strong>
+                        <small>(ESTRELOU NO VÍDEO TAMBÉM)</small>
+                    </div>
+                </div>
+                <div class="collaborator-row">
+                    <span class="collaborator-number">03</span>
+                    <span>Prof. Dr. Nilson Cristino da Cruz</span>
+                </div>
+                <div class="collaborator-row">
+                    <span class="collaborator-number">04</span>
+                    <span>Profa. Dra. Elidiane Cipriano Rangel</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- LINKS -->
+        <section class="contact-section section-shell section-space" id="contact">
+            <div class="section-heading reveal">
+
+                <h2>Continue por aqui<span class="accent">.</span></h2>
+            </div>
+
+            <div class="contact-links reveal">
+                <a id="labLink" href="https://rick-12q.github.io/SCOM_1_LIFS_SITE/" target="_blank" rel="noopener noreferrer">
+                    <span>Website do laboratório</span><span>↗</span>
+                </a>
+                <a id="instagramLink" href="#" target="_blank" rel="noopener noreferrer">
+                    <span>Instagram</span><span>↗</span>
+                </a>
+                <a id="linkedinLink" href="#" target="_blank" rel="noopener noreferrer">
+                    <span>LinkedIn</span><span>↗</span>
+                </a>
+                <a id="emailLink" href="#">
+                    <span>E-mail</span><span>↗</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- FINAL -->
+        <section class="closing-section section-shell">
+            <div class="closing-content reveal">
+
+                <h2>Eu não faço só filmes, faço sites, aceito propostas de emprego, <span>#quero_emprego #quero_grana</span></h2>
+                <p>Ciência, engenharia, gambiarra e um pouco de tudo.</p>
+                <a href="#home" class="back-to-top">VOLTAR AO INÍCIO ↑</a>
+            </div>
+            <div class="closing-watermark" aria-hidden="true">LH.</div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <span>© 2026 Luiz Henrique Corrêa Monteiro</span>
+        <span>UNESP · CIC 2026 · ATIBAIA</span>
+    </footer>
+</body>
+</html>
