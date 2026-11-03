@@ -1,12 +1,12 @@
 
-const SITE_CONFIG = {
+window.SITE_CONFIG = {
     links: {
         video: "https://www.instagram.com/reel/DeS2zcWgCcd/?utm_source=ig_web_copy_link&obrf=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==",
         voting: "",
         laboratory: "https://rick-12q.github.io/SCOM_1_LIFS_SITE/",
         instagram: "https://www.instagram.com/lhcm._/",
-        linkedin: "www.linkedin.com/in/luiz-henrique-corrêa-monteiro-681783300",
-        email: "lh.monteiro@unesp.br"
+        linkedin: "https://www.linkedin.com/in/luiz-henrique-corrêa-monteiro-681783300/",
+        email: "mailto:lh.monteiro@unesp.br"
     },
 
     images: {
