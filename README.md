@@ -65,19 +65,5 @@ RICK_CIC_WS/
 └── README.md
 ```
 
-## Executar localmente
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/rick-12q/RICK_CIC_WS.git
-   ```
-2. Abra a pasta no VS Code.
-3. Execute o arquivo `index.html` com a extensão **Live Server** ou abra-o diretamente no navegador.
-
-## Publicação
-
-O site pode ser hospedado gratuitamente pelo **GitHub Pages**, utilizando a branch `main` e a pasta raiz do repositório. Por ser um projeto estático, não há necessidade de servidor de aplicação.
-
----
 
 Desenvolvido para o **CIC 2026 — UNESP, Atibaia**, como iniciativa de comunicação e divulgação científica.
