@@ -18,6 +18,6 @@ window.SITE_CONFIG = {
         rameHart: "assets/images/rame-hart.jpg",
         afmEquipment: "assets/images/park-xe100-afm.jpg",
         afmResult: "assets/images/afm.jpg",
-        laboratory: "assets/images/laboratory-1.jpg"
+        laboratory: "assets/images/laboratory.jpg"
     }
 };
