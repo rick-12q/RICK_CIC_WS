@@ -3599,3 +3599,557 @@ img {
         --parallax-y: 0px !important;
     }
 }
+
+
+/* =========================================================
+   AJUSTES EXCLUSIVOS PARA MOBILE
+   Desktop permanece inalterado.
+========================================================= */
+
+@media (max-width: 760px) {
+    html {
+        scroll-padding-top: 82px;
+    }
+
+    .site-header {
+        width: 100%;
+        height: 66px;
+        min-width: 0;
+        padding-inline: 18px;
+        gap: 12px;
+    }
+
+    .site-header.scrolled {
+        height: 60px;
+    }
+
+    .brand {
+        flex: 0 0 auto;
+        font-size: 25px;
+    }
+
+    .header-tools {
+        flex: 0 0 auto;
+        margin-left: auto;
+        gap: 9px;
+    }
+
+    .theme-toggle,
+    .menu-toggle {
+        flex: 0 0 40px;
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+        padding: 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        position: relative;
+        z-index: 1202;
+    }
+
+    .menu-toggle span {
+        display: block;
+        flex: 0 0 auto;
+        width: 16px;
+        height: 2px;
+        border-radius: 2px;
+    }
+
+    .main-nav {
+        top: 66px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: calc(100dvh - 66px);
+        overflow-y: auto;
+        padding: 10px 22px 20px;
+        box-shadow: 0 18px 28px rgba(0, 0, 0, .22);
+    }
+
+    .site-header.scrolled .main-nav {
+        top: 60px;
+    }
+
+    .main-nav a {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        font-size: 13px;
+    }
+
+    .top-marquee {
+        margin-top: 66px;
+        padding-block: 11px;
+    }
+
+    .section-shell {
+        width: calc(100% - 36px);
+    }
+
+    .section-space {
+        padding-block: 66px;
+    }
+
+    .hero {
+        min-height: 0;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 30px;
+        padding-block: 48px 58px;
+    }
+
+    .hero-copy,
+    .hero-portrait-wrap,
+    .about-layout,
+    .research-feature,
+    .afm-feature,
+    .research-title-area,
+    .about-text {
+        min-width: 0;
+    }
+
+    .eyebrow {
+        flex-wrap: wrap;
+        row-gap: 7px;
+        margin-bottom: 22px;
+        font-size: 8px;
+        letter-spacing: 1.1px;
+    }
+
+    .hero-kicker {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .hero-name {
+        font-size: clamp(39px, 9.6vw, 58px);
+        line-height: 1.04;
+        letter-spacing: -2.8px;
+        overflow-wrap: normal;
+    }
+
+    .hero-description {
+        max-width: 100%;
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+    .video-callout {
+        width: 100%;
+        min-width: 0;
+        gap: 11px;
+        padding: 14px 12px;
+    }
+
+    .video-copy {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .video-copy strong {
+        font-size: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    .callout-arrow {
+        flex: 0 0 auto;
+        margin-left: 0;
+    }
+
+    .hero-actions {
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .hero-footnote {
+        margin-top: 28px;
+        font-size: 7px;
+        line-height: 1.7;
+    }
+
+    .hero-portrait-wrap {
+        width: min(100%, 430px);
+        min-height: 0;
+        margin-inline: auto;
+    }
+
+    .portrait-frame {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 4.4;
+    }
+
+    .portrait-caption {
+        left: 16px;
+        right: 16px;
+        bottom: 17px;
+    }
+
+    .portrait-caption span {
+        font-size: 7px;
+        line-height: 1.6;
+        letter-spacing: 1px;
+    }
+
+    .portrait-caption strong {
+        font-size: 20px;
+    }
+
+    .portrait-orbit,
+    .hero-scroll-hint {
+        display: none;
+    }
+
+    .image-ribbon {
+        padding-block: 13px;
+    }
+
+    .image-ribbon-group {
+        gap: 9px;
+        padding-right: 9px;
+    }
+
+    .image-ribbon-group img {
+        width: 170px;
+        height: 105px;
+    }
+
+    .section-heading {
+        margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+        font-size: clamp(31px, 8vw, 39px);
+        line-height: 1.12;
+        letter-spacing: -1.8px;
+        overflow-wrap: normal;
+    }
+
+    .section-lead {
+        margin-top: -12px;
+        margin-bottom: 28px;
+        font-size: 13px;
+        line-height: 1.75;
+    }
+
+    .about-layout,
+    .research-feature,
+    .afm-feature {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+    }
+
+    .about-photo {
+        width: min(100%, 310px);
+        max-width: none;
+        margin-inline: auto;
+    }
+
+    .about-statement {
+        margin-bottom: 18px;
+        font-size: 23px;
+        line-height: 1.35;
+    }
+
+    .about-text > p:not(.about-statement),
+    .research-description p,
+    .afm-copy p {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .profile-facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 14px;
+        margin-top: 25px;
+        padding-top: 20px;
+    }
+
+    .profile-facts strong {
+        font-size: 11px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    .research-title-area {
+        margin: 0 0 30px;
+    }
+
+    .research-title-area h3 {
+        margin-block: 13px;
+        font-size: clamp(27px, 7.5vw, 37px);
+        line-height: 1.12;
+        letter-spacing: -1.3px;
+        overflow-wrap: normal;
+    }
+
+    .research-title-area p {
+        font-size: 13px;
+        line-height: 1.75;
+    }
+
+    .research-image img {
+        aspect-ratio: 4 / 3;
+    }
+
+    .research-description h3,
+    .afm-copy h3 {
+        margin-bottom: 14px;
+        font-size: 23px;
+        line-height: 1.3;
+    }
+
+    .parameter-row {
+        justify-content: space-between;
+        gap: 14px;
+        margin-top: 20px;
+        padding-top: 18px;
+    }
+
+    .parameter-row strong {
+        font-size: 22px;
+    }
+
+    .funding-strip {
+        align-items: flex-start;
+        gap: 13px;
+        margin-top: 30px;
+        padding: 17px;
+    }
+
+    .funding-strip > div {
+        min-width: 0;
+    }
+
+    .funding-strip strong,
+    .funding-strip span {
+        overflow-wrap: anywhere;
+        line-height: 1.6;
+    }
+
+    .method-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 11px;
+    }
+
+    .method-card {
+        min-width: 0;
+        min-height: 310px;
+        padding: 13px;
+        border-radius: 8px;
+    }
+
+    .method-card-content {
+        padding: 11px;
+    }
+
+    .method-category {
+        font-size: 6px;
+        letter-spacing: .8px;
+        line-height: 1.5;
+    }
+
+    .method-card h3 {
+        font-size: 17px;
+    }
+
+    .method-card p {
+        min-height: 0;
+        font-size: 10px;
+        line-height: 1.6;
+    }
+
+    .equipment-tag {
+        font-size: 6px;
+        letter-spacing: .4px;
+        overflow-wrap: anywhere;
+    }
+
+    .substrate-panel {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+        margin-top: 28px;
+        padding: 19px;
+    }
+
+    .sample-chips {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .results-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .result-thickness {
+        grid-column: auto;
+    }
+
+    .result-card {
+        min-height: 0;
+        padding: 21px;
+    }
+
+    .result-index {
+        margin-bottom: 17px;
+    }
+
+    .result-card h3 {
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+
+    .thickness-values,
+    .comparison-values {
+        justify-content: flex-start;
+        gap: clamp(15px, 7vw, 34px);
+        margin-bottom: 20px;
+    }
+
+    .thickness-values strong,
+    .comparison-values strong {
+        font-size: clamp(25px, 7vw, 31px);
+    }
+
+    .afm-feature {
+        margin-top: 27px;
+    }
+
+    .afm-visual img {
+        aspect-ratio: 4 / 3;
+    }
+
+    /* Mantém a frase inteira em uma única linha, sem separar LUIZ. */
+    .dancing-phrase {
+        width: calc(100% - 24px);
+        max-width: 100%;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1px;
+        margin: 42px auto;
+        padding: 8px 0;
+        white-space: nowrap;
+        font-size: clamp(9px, 3.15vw, 17px);
+        letter-spacing: 0;
+        line-height: 1.4;
+    }
+
+    .dancing-phrase span:not(.word-space) {
+        flex: 0 0 auto;
+    }
+
+    .dancing-phrase .word-space {
+        flex: 0 0 .22em;
+        width: .22em;
+    }
+
+    .collaborator-row {
+        align-items: flex-start;
+        gap: 12px;
+        min-height: 68px;
+        padding: 16px 4px;
+    }
+
+    .collaborator-row > strong,
+    .collaborator-row > span:last-child,
+    .collaborator-name strong {
+        min-width: 0;
+        font-size: 12px;
+        line-height: 1.55;
+        overflow-wrap: anywhere;
+    }
+
+    .collaborator-name small {
+        font-size: 7px;
+        line-height: 1.5;
+    }
+
+    .contact-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .contact-links a {
+        min-width: 0;
+        min-height: 58px;
+        gap: 8px;
+        padding: 14px 12px;
+        font-size: 11px;
+    }
+
+    .closing-section {
+        min-height: 0;
+    }
+
+    .closing-content {
+        max-width: 100%;
+        padding-block: 65px;
+    }
+
+    .closing-content h2 {
+        font-size: clamp(29px, 8vw, 37px);
+        line-height: 1.16;
+        letter-spacing: -1.4px;
+        overflow-wrap: anywhere;
+    }
+
+    .closing-content h2 span {
+        overflow-wrap: anywhere;
+    }
+
+    .closing-watermark {
+        right: -10px;
+        bottom: -65px;
+        font-size: 170px;
+    }
+
+    .site-footer {
+        flex-direction: column;
+        gap: 7px;
+        padding: 20px 18px;
+        font-size: 8px;
+        line-height: 1.7;
+    }
+}
+
+/* Ajustes para aparelhos estreitos, sem alterar tablets ou desktop. */
+@media (max-width: 380px) {
+    .site-header {
+        padding-inline: 14px;
+    }
+
+    .section-shell {
+        width: calc(100% - 30px);
+    }
+
+    .hero {
+        padding-top: 40px;
+    }
+
+    .hero-name {
+        font-size: 39px;
+        letter-spacing: -2.5px;
+    }
+
+    .method-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .method-card {
+        min-height: 275px;
+    }
+
+    .contact-links {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .dancing-phrase {
+        font-size: 9px;
+        gap: 0;
+    }
+}
