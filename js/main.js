@@ -398,22 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* =====================================================
-     ANIMAÇÃO DO LETREIRO
-  ===================================================== */
-
-  const marquee = $(".top-marquee-track");
-
-  if (marquee && !reducedMotion) {
-    marquee.addEventListener("mouseenter", () => {
-      marquee.style.animationPlayState = "paused";
-    });
-
-    marquee.addEventListener("mouseleave", () => {
-      marquee.style.animationPlayState = "running";
-    });
-  }
-
+  
   /* =====================================================
      VALIDAÇÃO DAS IMAGENS
   ===================================================== */
@@ -436,4 +421,50 @@ document.addEventListener("DOMContentLoaded", () => {
   updateScroll();
 
   console.info("CIC 2026 — interface inicializada.");
+
+
+
+/* =====================================================
+   CARREGAMENTO DAS IMAGENS ANIMADAS
+===================================================== */
+
+async function prepareAnimatedImages() {
+  const ribbon = document.querySelector(".image-ribbon");
+  const marquee = document.querySelector(".top-marquee");
+
+  const images = ribbon
+    ? [...ribbon.querySelectorAll("img")]
+    : [];
+
+  const imagePromises = images.map(async (img) => {
+    img.loading = "eager";
+    img.decoding = "async";
+
+    if (img.complete && img.naturalWidth > 0) {
+      return;
+    }
+
+    try {
+      await img.decode();
+    } catch {
+      await new Promise((resolve) => {
+        if (img.complete) {
+          resolve();
+          return;
+        }
+
+        img.addEventListener("load", resolve, { once: true });
+        img.addEventListener("error", resolve, { once: true });
+      });
+    }
+  });
+
+  await Promise.all(imagePromises);
+
+  ribbon?.classList.add("images-ready");
+  marquee?.classList.add("marquee-ready");
+}
+
+prepareAnimatedImages();
+
 });

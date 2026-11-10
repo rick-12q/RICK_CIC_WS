@@ -338,10 +338,6 @@ svg {
   transition: transform .25s ease;
 }
 
-/* =========================================================
-   LETREIRO
-========================================================= */
-
 .top-marquee {
   width: 100%;
   margin-top: 96px;
@@ -354,17 +350,17 @@ svg {
 .top-marquee-track {
   display: flex;
   width: max-content;
+  flex-wrap: nowrap;
+  will-change: transform;
   animation: marquee 42s linear infinite;
-}
-
-.top-marquee:hover .top-marquee-track {
-  animation-play-state: paused;
+  animation-play-state: running !important;
 }
 
 .top-marquee-group {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 .top-marquee-group span {
@@ -378,7 +374,8 @@ svg {
 }
 
 @keyframes marquee {
-  to { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 /* =========================================================
@@ -756,6 +753,7 @@ svg {
 ========================================================= */
 
 .image-ribbon {
+  width: 100%;
   overflow: hidden;
   padding-block: 17px;
   border-block: 1px solid var(--line);
@@ -765,21 +763,22 @@ svg {
 .image-ribbon-track {
   display: flex;
   width: max-content;
+  flex-wrap: nowrap;
+  will-change: transform;
   animation: ribbon-scroll 48s linear infinite;
-}
-
-.image-ribbon:hover .image-ribbon-track {
-  animation-play-state: paused;
+  animation-play-state: running !important;
 }
 
 .image-ribbon-group {
   display: flex;
-  flex-shrink: 0;
+  flex: 0 0 auto;
   gap: 13px;
   padding-right: 13px;
 }
 
 .image-ribbon-group img {
+  display: block;
+  flex: 0 0 auto;
   width: 245px;
   height: 135px;
   object-fit: cover;
@@ -794,7 +793,8 @@ svg {
 }
 
 @keyframes ribbon-scroll {
-  to { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 /* =========================================================
