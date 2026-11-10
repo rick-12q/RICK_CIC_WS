@@ -1,268 +1,439 @@
+
 document.addEventListener("DOMContentLoaded", () => {
-    "use strict";
+  "use strict";
 
-    const config = window.SITE_CONFIG || {};
-    const links = config.links || {};
+  const config = window.SITE_CONFIG || {};
+  const links = config.links || {};
 
-    /* =====================================================
-       LINKS
-    ===================================================== */
+  const $ = (selector, parent = document) =>
+    parent.querySelector(selector);
 
-    function setExternalLink(id, url, options = {}) {
-        const element = document.getElementById(id);
-        if (!element) return;
+  const $$ = (selector, parent = document) =>
+    [...parent.querySelectorAll(selector)];
 
-        if (url && String(url).trim()) {
-            element.href = options.email ? `mailto:${url}` : url;
-            element.style.display = "";
-            element.removeAttribute("aria-disabled");
-        } else if (options.keepVisible) {
-            element.href = "#";
-            element.addEventListener("click", event => {
-                event.preventDefault();
-                alert("Adicione o endereço deste link no arquivo config.js.");
-            });
-        } else {
-            element.style.display = "none";
-        }
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  /* =====================================================
+     LINKS EXTERNOS
+  ===================================================== */
+
+  function setExternalLink(id, url, options = {}) {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    const valid = typeof url === "string" &&
+      url.trim() !== "" &&
+      !url.includes("COLOCAR_");
+
+    if (!valid) {
+      if (options.keepVisible) {
+        element.href = "#";
+        element.addEventListener("click", event => {
+          event.preventDefault();
+          alert("Adicione o endereço deste link no arquivo config.js.");
+        });
+      } else {
+        element.remove();
+      }
+      return;
     }
 
-    setExternalLink("videoLink", links.video, { keepVisible: true });
-    setExternalLink("votingLink", links.voting);
-    setExternalLink("labLink", links.laboratory);
-    setExternalLink("instagramLink", links.instagram);
-    setExternalLink("linkedinLink", links.linkedin);
-    setExternalLink("emailLink", links.email, { email: true });
+    element.href = url;
 
+    if (options.external) {
+      element.target = "_blank";
+      element.rel = "noopener noreferrer";
+    }
+  }
 
-    /* =====================================================
-       TEMA CLARO / ESCURO
-    ===================================================== */
+  setExternalLink("videoLink", links.video, {
+    keepVisible: true,
+    external: true
+  });
 
-    const themeToggle = document.getElementById("themeToggle");
-    const themeIcon = document.getElementById("themeIcon");
+  setExternalLink("votingLink", links.voting, {
+    external: true
+  });
 
-    function setTheme(theme) {
-        const isLight = theme === "light";
+  setExternalLink("labLink", links.laboratory, {
+    external: true
+  });
 
-        document.body.classList.toggle("light-theme", isLight);
-        themeIcon.textContent = isLight ? "☾" : "☼";
+  setExternalLink("instagramLink", links.instagram, {
+    external: true
+  });
 
-        document.documentElement.style.colorScheme =
-            isLight ? "light" : "dark";
+  setExternalLink("linkedinLink", links.linkedin, {
+    external: true
+  });
 
-        try {
-            localStorage.setItem("cic2026-theme", theme);
-        } catch (error) {
-            // O site continua funcionando sem armazenamento local.
-        }
+  setExternalLink("emailLink", links.email);
+
+  /* =====================================================
+     TEMA CLARO / ESCURO
+  ===================================================== */
+
+  const themeToggle = $("#themeToggle");
+  const themeIcon = $("#themeIcon");
+
+  const sunIcon = `
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+  `;
+
+  const moonIcon = `
+    <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"></path>
+  `;
+
+  function setTheme(theme) {
+    const light = theme === "light";
+
+    document.body.classList.toggle("light-theme", light);
+
+    if (themeIcon) {
+      themeIcon.innerHTML = light ? moonIcon : sunIcon;
     }
 
-    let initialTheme = "dark";
+    document.documentElement.style.colorScheme =
+      light ? "light" : "dark";
+
+    const metaTheme = $('meta[name="theme-color"]');
+
+    if (metaTheme) {
+      metaTheme.content = light ? "#f0f0e9" : "#111310";
+    }
 
     try {
-        initialTheme = localStorage.getItem("cic2026-theme") || "dark";
+      localStorage.setItem("cic2026-theme", theme);
     } catch (error) {
-        // Mantém o tema escuro como padrão.
+      // O site continua funcionando sem armazenamento.
     }
+  }
 
-    setTheme(initialTheme);
+  let savedTheme = "dark";
 
-    themeToggle.addEventListener("click", () => {
-        const isLight = document.body.classList.contains("light-theme");
-        setTheme(isLight ? "dark" : "light");
-    });
+  try {
+    savedTheme = localStorage.getItem("cic2026-theme") || "dark";
+  } catch (error) {
+    savedTheme = "dark";
+  }
 
+  setTheme(savedTheme);
 
-    /* =====================================================
-       MENU MOBILE
-    ===================================================== */
+  themeToggle?.addEventListener("click", () => {
+    const current = document.body.classList.contains("light-theme");
+    setTheme(current ? "dark" : "light");
+  });
 
-    const menuToggle = document.getElementById("menuToggle");
-    const mainNav = document.getElementById("mainNav");
+  /* =====================================================
+     MENU EXPOGLASS / MOBILE
+  ===================================================== */
 
-    function closeMenu() {
-        mainNav.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-    }
+  const menuToggle = $("#menuToggle");
+  const mainNav = $("#mainNav");
 
-    menuToggle.addEventListener("click", () => {
-        const isOpen = mainNav.classList.toggle("open");
-        menuToggle.setAttribute("aria-expanded", String(isOpen));
-    });
+  function openMenu() {
+    if (!mainNav || !menuToggle) return;
 
-    mainNav.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", closeMenu);
-    });
+    mainNav.classList.add("open");
+    menuToggle.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-label", "Fechar menu");
+  }
 
-    document.addEventListener("keydown", event => {
-        if (event.key === "Escape") closeMenu();
-    });
+  function closeMenu() {
+    if (!mainNav || !menuToggle) return;
 
+    mainNav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Abrir menu");
+  }
 
-    /* =====================================================
-       REVEAL — ANIMAÇÕES VINCULADAS À ROLAGEM
-    ===================================================== */
+  menuToggle?.addEventListener("click", () => {
+    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
 
-    const revealElements = document.querySelectorAll(".reveal");
-    const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-    const supportsViewTimeline = window.CSS && CSS.supports("animation-timeline: view()");
-
-    // Navegadores sem scroll-driven animations usam IntersectionObserver como fallback.
-    if (prefersReducedMotion || !supportsViewTimeline) {
-        if ("IntersectionObserver" in window && !prefersReducedMotion) {
-            const revealObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("is-visible");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.12,
-                rootMargin: "0px 0px -35px 0px"
-            });
-
-            revealElements.forEach(element => revealObserver.observe(element));
-        } else {
-            revealElements.forEach(element => element.classList.add("is-visible"));
-        }
+    if (isOpen) {
+      closeMenu();
     } else {
-        document.documentElement.classList.add("has-view-timeline");
+      openMenu();
     }
+  });
 
+  $$("#mainNav a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
 
-    /* =====================================================
-       SCROLL PROGRESS + HEADER
-    ===================================================== */
-
-    const progressBar = document.getElementById("scrollProgress");
-    const header = document.getElementById("siteHeader");
-
-    let scrollTicking = false;
-
-    function updateScrollEffects() {
-        const maxScroll =
-            document.documentElement.scrollHeight - window.innerHeight;
-
-        const progress = maxScroll > 0
-            ? (window.scrollY / maxScroll) * 100
-            : 0;
-
-        progressBar.style.transform = `scaleX(${progress / 100})`;
-        header.classList.toggle("scrolled", window.scrollY > 35);
-
-        updateParallax();
-
-        scrollTicking = false;
+  document.addEventListener("click", event => {
+    if (
+      mainNav &&
+      menuToggle &&
+      !mainNav.contains(event.target) &&
+      !menuToggle.contains(event.target)
+    ) {
+      closeMenu();
     }
+  });
 
-    window.addEventListener("scroll", () => {
-        if (!scrollTicking) {
-            window.requestAnimationFrame(updateScrollEffects);
-            scrollTicking = true;
-        }
-    }, { passive: true });
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  });
 
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 760) {
+      closeMenu();
+    }
+  });
 
-    /* =====================================================
-       PARALLAX — MOVIMENTO CONTÍNUO VINCULADO AO SCROLL
-    ===================================================== */
+  /* =====================================================
+     REVEAL — ENTRADA DOS ELEMENTOS
+  ===================================================== */
 
-    const parallaxElements = document.querySelectorAll("[data-parallax]");
+  const revealElements = $$(".reveal");
 
-    function updateParallax() {
-        if (prefersReducedMotion || window.innerWidth < 760) {
-            parallaxElements.forEach(element => {
-                element.style.setProperty("--parallax-y", "0px");
-                element.dataset.parallaxCurrent = "0";
-            });
-            return;
-        }
+  if (reducedMotion) {
+    revealElements.forEach(element => {
+      element.classList.add("is-visible");
+    });
+  } else if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
 
-        const viewportHeight = window.innerHeight;
-
-        parallaxElements.forEach(element => {
-            const speed = Number(element.dataset.parallax) || 0.08;
-            const rect = element.getBoundingClientRect();
-            const previousMovement = Number(element.dataset.parallaxCurrent || 0);
-            const naturalTop = rect.top - previousMovement;
-            const naturalCenter = naturalTop + rect.height / 2;
-
-            if (naturalTop + rect.height < 0 || naturalTop > viewportHeight) return;
-
-            const distanceFromCenter = naturalCenter - viewportHeight / 2;
-            const movement = distanceFromCenter * speed;
-
-            element.style.setProperty("--parallax-y", `${movement}px`);
-            element.dataset.parallaxCurrent = String(movement);
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
         });
-    }
-
-    updateScrollEffects();
-
-
-    /* =====================================================
-       ACTIVE NAV — INDICA A SEÇÃO VISÍVEL
-    ===================================================== */
-
-    const observedSections = document.querySelectorAll(
-        "#about, #research, #methodology, #results, #collaborators"
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -45px 0px"
+      }
     );
 
-    const navLinks = document.querySelectorAll(".main-nav a");
+    revealElements.forEach(element => {
+      revealObserver.observe(element);
+    });
+  } else {
+    revealElements.forEach(element => {
+      element.classList.add("is-visible");
+    });
+  }
 
-    if ("IntersectionObserver" in window) {
-        const sectionObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
+  /* =====================================================
+     SCROLL PROGRESS + HEADER
+  ===================================================== */
 
-                const sectionId = entry.target.id;
+  const progressBar = $("#scrollProgress");
+  const header = $("#siteHeader");
 
-                navLinks.forEach(link => {
-                    const active = link.getAttribute("href") === `#${sectionId}`;
-                    link.classList.toggle("active", active);
-                });
-            });
-        }, {
-            rootMargin: "-35% 0px -55% 0px"
-        });
+  let scrollTicking = false;
 
-        observedSections.forEach(section => sectionObserver.observe(section));
+  function updateScroll() {
+    const scrollHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+
+    const progress = scrollHeight > 0
+      ? window.scrollY / scrollHeight
+      : 0;
+
+    if (progressBar) {
+      progressBar.style.transform = `scaleX(${progress})`;
     }
 
+    header?.classList.toggle("scrolled", window.scrollY > 35);
 
-    /* =====================================================
-       MICROINTERAÇÃO DE MOVIMENTO NOS CARTÕES
-    ===================================================== */
+    updateParallax();
 
-    if (!prefersReducedMotion && window.matchMedia("(hover: hover)").matches) {
-        document.querySelectorAll(".method-card, .result-card").forEach(card => {
-            card.addEventListener("pointermove", event => {
-                const rect = card.getBoundingClientRect();
-                const x = (event.clientX - rect.left) / rect.width;
-                const y = (event.clientY - rect.top) / rect.height;
+    scrollTicking = false;
+  }
 
-                card.style.setProperty("--pointer-x", `${x * 100}%`);
-                card.style.setProperty("--pointer-y", `${y * 100}%`);
-            });
-        });
+  window.addEventListener("scroll", () => {
+    if (scrollTicking) return;
+
+    window.requestAnimationFrame(updateScroll);
+    scrollTicking = true;
+  }, { passive: true });
+
+  /* =====================================================
+     PARALLAX
+  ===================================================== */
+
+  const parallaxElements = $$("[data-parallax]");
+
+  function updateParallax() {
+    if (reducedMotion || window.innerWidth < 760) {
+      parallaxElements.forEach(element => {
+        element.style.setProperty("--parallax-y", "0px");
+      });
+      return;
     }
 
+    const viewportHeight = window.innerHeight;
 
-    /* =====================================================
-       IMAGENS — AVISO NO CONSOLE PARA ARQUIVOS AUSENTES
-    ===================================================== */
+    parallaxElements.forEach(element => {
+      const speed = Number(element.dataset.parallax) || 0.06;
+      const rect = element.getBoundingClientRect();
 
-    document.querySelectorAll("img").forEach(img => {
-        img.addEventListener("error", () => {
-            console.warn("Imagem não encontrada:", img.getAttribute("src"));
-            img.classList.add("image-load-error");
+      if (
+        rect.bottom < 0 ||
+        rect.top > viewportHeight
+      ) return;
+
+      const center = rect.top + rect.height / 2;
+      const distance = center - viewportHeight / 2;
+      const movement = distance * speed;
+
+      element.style.setProperty(
+        "--parallax-y",
+        `${movement}px`
+      );
+
+      element.style.transform =
+        `translate3d(0, ${movement}px, 0)`;
+    });
+  }
+
+  if (!reducedMotion) {
+    updateScroll();
+
+    window.addEventListener("resize", () => {
+      updateParallax();
+    });
+  }
+
+  /* =====================================================
+     NAVEGAÇÃO ATIVA
+  ===================================================== */
+
+  const sections = $$(
+    "#about, #research, #methodology, #results, #collaborators, #contact"
+  );
+
+  const navLinks = $$("#mainNav a");
+
+  if ("IntersectionObserver" in window) {
+    const sectionObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+
+          const id = entry.target.id;
+
+          navLinks.forEach(link => {
+            const active = link.getAttribute("href") === `#${id}`;
+            link.classList.toggle("active", active);
+          });
         });
+      },
+      {
+        rootMargin: "-35% 0px -55% 0px",
+        threshold: 0
+      }
+    );
+
+    sections.forEach(section => {
+      sectionObserver.observe(section);
+    });
+  }
+
+  /* =====================================================
+     MOVIMENTO 3D DOS CARTÕES
+  ===================================================== */
+
+  const hoverEnabled = window.matchMedia(
+    "(hover: hover) and (pointer: fine)"
+  ).matches;
+
+  if (!reducedMotion && hoverEnabled) {
+    $$(".method-card, .result-card").forEach(card => {
+      card.addEventListener("pointermove", event => {
+        const rect = card.getBoundingClientRect();
+
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+
+        const rotateY = (x - 0.5) * 3;
+        const rotateX = (0.5 - y) * 3;
+
+        if (card.classList.contains("method-card")) {
+          card.style.transform =
+            `translateY(-9px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        }
+
+        card.style.setProperty("--pointer-x", `${x * 100}%`);
+        card.style.setProperty("--pointer-y", `${y * 100}%`);
+      });
+
+      card.addEventListener("pointerleave", () => {
+        card.style.removeProperty("transform");
+      });
+    });
+  }
+
+  /* =====================================================
+     MICROINTERAÇÃO DO RETRATO
+  ===================================================== */
+
+  const portrait = $(".portrait-frame");
+
+  if (!reducedMotion && hoverEnabled && portrait) {
+    portrait.addEventListener("pointermove", event => {
+      const rect = portrait.getBoundingClientRect();
+
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+
+      const rotateY = (x - 0.5) * 3;
+      const rotateX = (0.5 - y) * 3;
+
+      portrait.style.transform =
+        `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
 
+    portrait.addEventListener("pointerleave", () => {
+      portrait.style.removeProperty("transform");
+    });
+  }
 
-    console.info("CIC 2026 — site inicializado.");
+  /* =====================================================
+     ANIMAÇÃO DO LETREIRO
+  ===================================================== */
+
+  const marquee = $(".top-marquee-track");
+
+  if (marquee && !reducedMotion) {
+    marquee.addEventListener("mouseenter", () => {
+      marquee.style.animationPlayState = "paused";
+    });
+
+    marquee.addEventListener("mouseleave", () => {
+      marquee.style.animationPlayState = "running";
+    });
+  }
+
+  /* =====================================================
+     VALIDAÇÃO DAS IMAGENS
+  ===================================================== */
+
+  $$("img").forEach(img => {
+    img.addEventListener("error", () => {
+      console.warn(
+        "Imagem não encontrada:",
+        img.getAttribute("src")
+      );
+
+      img.classList.add("image-load-error");
+    });
+  });
+
+  /* =====================================================
+     INICIALIZAÇÃO
+  ===================================================== */
+
+  updateScroll();
+
+  console.info("CIC 2026 — interface inicializada.");
 });
