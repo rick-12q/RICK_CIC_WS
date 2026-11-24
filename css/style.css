@@ -1,4 +1,3 @@
-
 /* =========================================================
    CIC 2026 — IDENTIDADE VISUAL
    Editorial / Experimental / Isometric typography
@@ -2295,164 +2294,275 @@ svg {
   }
 }
 
-
 /* =========================================================
-   CHAMADA PRINCIPAL — INSTAGRAM
-   Destaque intencionalmente forte para deixar o clique evidente.
+   DESTAQUE ESPECIAL — INSTAGRAM
+   Esta é a única adição ao CSS original.
 ========================================================= */
 
-.contact-links #instagramLink {
-  grid-column: 1 / -1;
+#instagramLink {
   position: relative;
   isolation: isolate;
-  overflow: visible;
-  min-height: 142px;
-  margin-top: 34px;
-  padding: 38px 34px 30px;
+  min-height: 125px;
+  padding: 36px 18px 34px;
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;
+  gap: 12px;
 
-  border: 3px solid #ff3b78;
-  border-radius: 15px;
-  background: linear-gradient(110deg, #ff2f75 0%, #e72b91 48%, #8b35cf 100%);
+  overflow: visible;
+
   color: #fff;
-  box-shadow:
-    0 0 0 5px rgba(255, 59, 120, .18),
-    0 0 32px rgba(255, 45, 120, .48),
-    0 16px 38px rgba(0, 0, 0, .28);
+  background: linear-gradient(135deg, #e1306c, #833ab4);
+  border: 2px solid #ffcf4a;
+  border-radius: 10px;
 
-  font-family: var(--font-display);
-  font-size: clamp(30px, 4vw, 48px);
-  font-weight: 900;
-  letter-spacing: .3px;
-  text-transform: uppercase;
-  animation: instagram-pulse 1.8s ease-in-out infinite;
-  transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
-}
-
-.contact-links #instagramLink::before {
-  content: "↓  ↓  ↓     CLIQUE AQUI     ↓  ↓  ↓";
-  position: absolute;
-  z-index: 2;
-  top: -29px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: max-content;
-  max-width: calc(100vw - 48px);
-  padding: 7px 17px;
-  border-radius: 7px;
-  background: #fff200;
-  color: #17130a;
-  box-shadow: 0 4px 0 #c9a900, 0 8px 18px rgba(0,0,0,.22);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: .4px;
   text-align: center;
-  animation: instagram-point 0.75s ease-in-out infinite alternate;
+
+  box-shadow:
+    0 0 0 3px rgba(225, 48, 108, .18),
+    0 8px 25px rgba(225, 48, 108, .32);
+
+  animation: instagram-pulse 2s ease-in-out infinite;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    filter .3s ease;
 }
 
-.contact-links #instagramLink span {
-  position: relative;
-  z-index: 1;
-  padding-top: 7px;
-  text-shadow: 0 2px 8px rgba(0,0,0,.2);
-}
+#instagramLink::before {
+  content: "↓↓↓ CLIQUE AQUI ↓↓↓";
 
-.contact-links #instagramLink svg {
-  position: relative;
-  z-index: 1;
-  width: 42px;
-  height: 42px;
-  flex: 0 0 auto;
-  color: #fff;
-  stroke-width: 2.3;
-  filter: drop-shadow(0 2px 5px rgba(0,0,0,.25));
-}
-
-.contact-links #instagramLink::after {
-  content: "TOQUE PARA ABRIR O INSTAGRAM  →";
   position: absolute;
-  right: 28px;
-  bottom: 12px;
-  color: #fff;
+  top: 9px;
+  left: 0;
+  right: 0;
+
+  color: #ffdf65;
   font-family: var(--font-mono);
   font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-align: center;
+
+  animation: instagram-arrow 1s ease-in-out infinite;
+}
+
+#instagramLink::after {
+  content: "TOQUE PARA ABRIR O INSTAGRAM →";
+
+  position: absolute;
+  bottom: 9px;
+  left: 0;
+  right: 0;
+
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 8px;
   font-weight: 800;
-  letter-spacing: 1.3px;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
-.contact-links #instagramLink:hover {
-  transform: translateY(-7px) scale(1.015);
-  filter: brightness(1.12) saturate(1.15);
+#instagramLink svg {
+  color: #fff;
+  width: 23px;
+  height: 23px;
+}
+
+#instagramLink:hover {
+  transform: translateY(-7px) scale(1.035);
+  filter: saturate(1.2);
+
+  border-color: #fff;
   box-shadow:
-    0 0 0 7px rgba(255, 59, 120, .24),
-    0 0 48px rgba(255, 45, 120, .7),
-    0 22px 42px rgba(0, 0, 0, .32);
-}
-
-.contact-links #instagramLink:active {
-  transform: scale(.985);
-}
-
-.contact-links #instagramLink:focus-visible {
-  outline: 4px solid #fff200;
-  outline-offset: 7px;
+    0 0 0 5px rgba(225, 48, 108, .2),
+    0 15px 38px rgba(225, 48, 108, .48);
 }
 
 @keyframes instagram-pulse {
   0%, 100% {
-    box-shadow: 0 0 0 4px rgba(255,59,120,.16), 0 0 25px rgba(255,45,120,.36), 0 16px 38px rgba(0,0,0,.25);
+    box-shadow:
+      0 0 0 3px rgba(225, 48, 108, .18),
+      0 8px 25px rgba(225, 48, 108, .32);
   }
+
   50% {
-    box-shadow: 0 0 0 9px rgba(255,59,120,.25), 0 0 46px rgba(255,45,120,.68), 0 18px 42px rgba(0,0,0,.3);
+    box-shadow:
+      0 0 0 7px rgba(225, 48, 108, .12),
+      0 10px 35px rgba(225, 48, 108, .5);
   }
 }
 
-@keyframes instagram-point {
-  from { top: -29px; }
-  to { top: -19px; }
-}
-
-@media (max-width: 600px) {
-  .contact-links #instagramLink {
-    min-height: 132px;
-    margin-top: 30px;
-    padding: 39px 17px 29px;
-    font-size: clamp(27px, 8vw, 38px);
-    gap: 10px;
+@keyframes instagram-arrow {
+  0%, 100% {
+    transform: translateY(0);
   }
 
-  .contact-links #instagramLink::before {
-    top: -27px;
-    padding: 7px 10px;
-    font-size: 10px;
-    letter-spacing: .4px;
-  }
-
-  .contact-links #instagramLink::after {
-    right: 17px;
-    bottom: 10px;
-    font-size: 8px;
-    letter-spacing: .7px;
-  }
-
-  .contact-links #instagramLink svg {
-    width: 32px;
-    height: 32px;
-  }
-
-  @keyframes instagram-point {
-    from { top: -27px; }
-    to { top: -18px; }
+  50% {
+    transform: translateY(4px);
   }
 }
+
+/* DESTAQUE DO INSTAGRAM EM TELAS PEQUENAS */
+
+@media (max-width: 760px) {
+  #instagramLink {
+    min-height: 105px;
+    padding: 32px 12px 30px;
+    font-size: 12px;
+    gap: 8px;
+  }
+
+  #instagramLink::before {
+    top: 7px;
+    font-size: 9px;
+  }
+
+  #instagramLink::after {
+    bottom: 7px;
+    font-size: 7px;
+  }
+
+  #instagramLink svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* RESPEITA A PREFERÊNCIA POR MENOS ANIMAÇÕES */
 
 @media (prefers-reduced-motion: reduce) {
-  .contact-links #instagramLink,
-  .contact-links #instagramLink::before {
+  #instagramLink {
     animation: none;
   }
+
+  #instagramLink::before {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   DESTAQUE INTENSO — VÍDEO DO INSTAGRAM
+   ========================================================= */
+
+a[href="https://www.instagram.com/reel/DeS2zcWgCcd/"] {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    margin: 36px auto;
+    padding: 30px 34px;
+
+    background: linear-gradient(135deg, #8a003f, #e6005c 55%, #ff287d);
+    color: #ffffff !important;
+
+    border: 3px solid #ffffff;
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 12px #ff1680,
+        0 0 28px rgba(255, 0, 110, 0.9),
+        0 0 55px rgba(255, 0, 110, 0.65);
+
+    text-decoration: none !important;
+    text-align: center;
+
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.7;
+
+    animation: instagramExplosivePulse 0.85s ease-in-out infinite;
+    transition: filter 0.2s ease;
+    z-index: 1;
+}
+
+/* Efeito de expansão ao redor do botão */
+a[href="https://www.instagram.com/reel/DeS2zcWgCcd/"]::after {
+    content: "";
+    position: absolute;
+    inset: -9px;
+    border: 3px solid #ff1680;
+    border-radius: 25px;
+    pointer-events: none;
+    z-index: -1;
+
+    animation: instagramRingPulse 0.85s ease-out infinite;
+}
+
+/* Chamada superior */
+a[href="https://www.instagram.com/reel/DeS2zcWgCcd/"]::before {
+    content: "🔥  ASSISTA AO VÍDEO NO INSTAGRAM  🔥";
+    display: block;
+    margin-bottom: 12px;
+
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 1000;
+    letter-spacing: 2px;
+}
+
+/* Hover */
+a[href="https://www.instagram.com/reel/DeS2zcWgCcd/"]:hover {
+    filter: brightness(1.3) saturate(1.3);
+    animation-duration: 0.45s;
+}
+
+/* Pulsação rápida e intensa */
+@keyframes instagramExplosivePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow:
+            0 0 12px #ff1680,
+            0 0 28px rgba(255, 0, 110, 0.9),
+            0 0 55px rgba(255, 0, 110, 0.65);
+    }
+
+    50% {
+        transform: scale(1.045);
+        box-shadow:
+            0 0 22px #ff70b5,
+            0 0 45px #ff1680,
+            0 0 85px rgba(255, 0, 110, 1);
+    }
+}
+
+/* Ondas de brilho */
+@keyframes instagramRingPulse {
+    0% {
+        transform: scale(0.98);
+        opacity: 0.95;
+    }
+
+    100% {
+        transform: scale(1.12);
+        opacity: 0;
+    }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+    a[href="https://www.instagram.com/reel/DeS2zcWgCcd/"] {
+        padding: 23px 17px;
+        margin: 25px auto;
+        font-size: 1rem;
+    }
+
+    a[href="https://www.instagram.com/reel/DeS2zcWgCcd/"]::before {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    a[href="https://www.instagram.com/reel/DeS2zcWgCcd/"],
+    a[href="https://www.instagram.com/reel/DeS2zcWgCcd/"]::after {
+        animation: none;
+        transition: none;
+    }
 }
