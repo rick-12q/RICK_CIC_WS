@@ -2297,104 +2297,162 @@ svg {
 
 
 /* =========================================================
-   DESTAQUE EXCLUSIVO — LINK DO INSTAGRAM
+   CHAMADA PRINCIPAL — INSTAGRAM
+   Destaque intencionalmente forte para deixar o clique evidente.
 ========================================================= */
 
 .contact-links #instagramLink {
   grid-column: 1 / -1;
-  min-height: 104px;
-  padding: 22px 26px;
   position: relative;
-  overflow: hidden;
+  isolation: isolate;
+  overflow: visible;
+  min-height: 142px;
+  margin-top: 34px;
+  padding: 38px 34px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
 
-  border: 2px solid var(--accent);
-  border-radius: 12px;
-  background:
-    linear-gradient(105deg, rgba(182, 201, 155, .22), rgba(182, 201, 155, .06) 58%, transparent),
-    var(--surface);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .16);
-  color: var(--text);
+  border: 3px solid #ff3b78;
+  border-radius: 15px;
+  background: linear-gradient(110deg, #ff2f75 0%, #e72b91 48%, #8b35cf 100%);
+  color: #fff;
+  box-shadow:
+    0 0 0 5px rgba(255, 59, 120, .18),
+    0 0 32px rgba(255, 45, 120, .48),
+    0 16px 38px rgba(0, 0, 0, .28);
 
   font-family: var(--font-display);
-  font-size: clamp(25px, 3vw, 36px);
-  font-weight: 800;
-  letter-spacing: .2px;
-  transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 900;
+  letter-spacing: .3px;
+  text-transform: uppercase;
+  animation: instagram-pulse 1.8s ease-in-out infinite;
+  transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
 }
 
 .contact-links #instagramLink::before {
-  content: "SIGA / ACOMPANHE";
+  content: "↓  ↓  ↓     CLIQUE AQUI     ↓  ↓  ↓";
   position: absolute;
-  top: 13px;
-  left: 27px;
-  color: var(--accent);
+  z-index: 2;
+  top: -29px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100vw - 48px);
+  padding: 7px 17px;
+  border-radius: 7px;
+  background: #fff200;
+  color: #17130a;
+  box-shadow: 0 4px 0 #c9a900, 0 8px 18px rgba(0,0,0,.22);
   font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 1.5px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-align: center;
+  animation: instagram-point 0.75s ease-in-out infinite alternate;
 }
 
 .contact-links #instagramLink span {
-  padding-top: 13px;
+  position: relative;
+  z-index: 1;
+  padding-top: 7px;
+  text-shadow: 0 2px 8px rgba(0,0,0,.2);
 }
 
 .contact-links #instagramLink svg {
-  width: 34px;
-  height: 34px;
+  position: relative;
+  z-index: 1;
+  width: 42px;
+  height: 42px;
   flex: 0 0 auto;
-  color: var(--accent);
-  stroke-width: 1.8;
+  color: #fff;
+  stroke-width: 2.3;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,.25));
 }
 
 .contact-links #instagramLink::after {
-  content: "ABRIR PERFIL";
+  content: "TOQUE PARA ABRIR O INSTAGRAM  →";
   position: absolute;
-  right: 78px;
-  bottom: 15px;
-  color: var(--muted);
+  right: 28px;
+  bottom: 12px;
+  color: #fff;
   font-family: var(--font-mono);
-  font-size: 8px;
-  letter-spacing: 1px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
 }
 
 .contact-links #instagramLink:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent);
-  background:
-    linear-gradient(105deg, rgba(182, 201, 155, .34), rgba(182, 201, 155, .1) 65%, transparent),
-    var(--surface-2);
-  box-shadow: 0 16px 38px rgba(0, 0, 0, .23);
+  transform: translateY(-7px) scale(1.015);
+  filter: brightness(1.12) saturate(1.15);
+  box-shadow:
+    0 0 0 7px rgba(255, 59, 120, .24),
+    0 0 48px rgba(255, 45, 120, .7),
+    0 22px 42px rgba(0, 0, 0, .32);
+}
+
+.contact-links #instagramLink:active {
+  transform: scale(.985);
 }
 
 .contact-links #instagramLink:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 4px;
+  outline: 4px solid #fff200;
+  outline-offset: 7px;
+}
+
+@keyframes instagram-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(255,59,120,.16), 0 0 25px rgba(255,45,120,.36), 0 16px 38px rgba(0,0,0,.25);
+  }
+  50% {
+    box-shadow: 0 0 0 9px rgba(255,59,120,.25), 0 0 46px rgba(255,45,120,.68), 0 18px 42px rgba(0,0,0,.3);
+  }
+}
+
+@keyframes instagram-point {
+  from { top: -29px; }
+  to { top: -19px; }
 }
 
 @media (max-width: 600px) {
   .contact-links #instagramLink {
-    min-height: 92px;
-    padding: 19px 17px;
-    font-size: 27px;
+    min-height: 132px;
+    margin-top: 30px;
+    padding: 39px 17px 29px;
+    font-size: clamp(27px, 8vw, 38px);
+    gap: 10px;
   }
 
   .contact-links #instagramLink::before {
-    left: 18px;
-    top: 11px;
+    top: -27px;
+    padding: 7px 10px;
+    font-size: 10px;
+    letter-spacing: .4px;
   }
 
   .contact-links #instagramLink::after {
-    right: 65px;
-    bottom: 13px;
-    font-size: 7px;
+    right: 17px;
+    bottom: 10px;
+    font-size: 8px;
+    letter-spacing: .7px;
   }
 
   .contact-links #instagramLink svg {
-    width: 29px;
-    height: 29px;
+    width: 32px;
+    height: 32px;
+  }
+
+  @keyframes instagram-point {
+    from { top: -27px; }
+    to { top: -18px; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-links #instagramLink,
+  .contact-links #instagramLink::before {
+    animation: none;
   }
 }
