@@ -2294,3 +2294,107 @@ svg {
     transform: none;
   }
 }
+
+
+/* =========================================================
+   DESTAQUE EXCLUSIVO — LINK DO INSTAGRAM
+========================================================= */
+
+.contact-links #instagramLink {
+  grid-column: 1 / -1;
+  min-height: 104px;
+  padding: 22px 26px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  background:
+    linear-gradient(105deg, rgba(182, 201, 155, .22), rgba(182, 201, 155, .06) 58%, transparent),
+    var(--surface);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .16);
+  color: var(--text);
+
+  font-family: var(--font-display);
+  font-size: clamp(25px, 3vw, 36px);
+  font-weight: 800;
+  letter-spacing: .2px;
+  transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+}
+
+.contact-links #instagramLink::before {
+  content: "SIGA / ACOMPANHE";
+  position: absolute;
+  top: 13px;
+  left: 27px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+
+.contact-links #instagramLink span {
+  padding-top: 13px;
+}
+
+.contact-links #instagramLink svg {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  color: var(--accent);
+  stroke-width: 1.8;
+}
+
+.contact-links #instagramLink::after {
+  content: "ABRIR PERFIL";
+  position: absolute;
+  right: 78px;
+  bottom: 15px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.contact-links #instagramLink:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  background:
+    linear-gradient(105deg, rgba(182, 201, 155, .34), rgba(182, 201, 155, .1) 65%, transparent),
+    var(--surface-2);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, .23);
+}
+
+.contact-links #instagramLink:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  .contact-links #instagramLink {
+    min-height: 92px;
+    padding: 19px 17px;
+    font-size: 27px;
+  }
+
+  .contact-links #instagramLink::before {
+    left: 18px;
+    top: 11px;
+  }
+
+  .contact-links #instagramLink::after {
+    right: 65px;
+    bottom: 13px;
+    font-size: 7px;
+  }
+
+  .contact-links #instagramLink svg {
+    width: 29px;
+    height: 29px;
+  }
+}
